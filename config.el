@@ -1,5 +1,8 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
+;; Get rid of all the horrible "smart" closing of things.
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+
 ;; Place your private configuration here
 (evil-set-undo-system 'undo-fu)
 
