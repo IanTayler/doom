@@ -19,7 +19,7 @@
         org-capture-templates ;; Set custom capture templates. Almost the same as the default ones.
         '(("t" "Personal todo" entry
         (file+headline +org-capture-todo-file "Inbox")
-        "* [ ] C:%U %?\n%i\n%a" :prepend t) ;; Added a created timestamp here.
+        "* [ ] %?\nCREATED: %U\n %i\n%a" :prepend t) ;; Added a created timestamp here.
         ("n" "Personal notes" entry
         (file+headline +org-capture-notes-file "Inbox")
         "* %u %?\n%i\n%a" :prepend t)
