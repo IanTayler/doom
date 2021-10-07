@@ -146,6 +146,7 @@
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;web               ; the tubes
        ;;vala              ; GObjective-C
+       yaml              ; json for people who don't care about security
 
        :email
        ;;(mu4e +gmail)       ; WIP
