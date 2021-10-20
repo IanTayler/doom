@@ -134,7 +134,7 @@
        (python           ; beautiful is better than ugly
         +lsp             ; get lsp for python
         +pyright         ; use pyright as lsp
-        +poetry)         ; properly handle ruby venvs.
+        +pyenv)          ; properly handle venvs.
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
