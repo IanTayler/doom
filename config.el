@@ -9,8 +9,9 @@
 ;; Make any files including Dockerfile use dockerfile mode.
 (add-to-list 'auto-mode-alist '("\\Dockerfile\\'" . dockerfile-mode))
 
-;; Don't make poetry try to update on every command.
-(setq poetry-tracking-strategy 'projectile)
+;; Swap ; and : for improving chances of not getting tendinitis.
+(map! :nem ":" #'evil-repeat-find-char)
+(map! :nem ";" #'evil-ex)
 
 ;; Org stuff.
 (after! org
