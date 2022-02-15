@@ -13,6 +13,10 @@
 (map! :nem ":" #'evil-repeat-find-char)
 (map! :nem ";" #'evil-ex)
 
+(after! evil
+  (with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol)))
+
 ;; Org stuff.
 (after! org
   (setq org-log-done ;; We want to have a FINISHED timestamp for tasks.
