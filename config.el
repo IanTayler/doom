@@ -67,3 +67,34 @@
         "* %U %?\n %i\n %a"
         :heading "Changelog"
         :prepend t))))
+
+;; Provide syntax highlighting for vivado xdc files used in FPGAs
+;; Copyright (C) 2013 Jim Wu
+;; Author: Jim Wu (jimwu88 at yahoo dot com)
+(add-hook 'vivado-mode-hook '(lambda () (font-lock-mode 1)))
+(autoload 'vivado-mode "vivado-mode")
+
+(setq vivado_keywords
+ '(("\\<\\(get_files\\|get_clocks\\|get_cells\\|get_pins\\|get_ports\\|get_nets\\)\\>" . font-lock-keyword-face)
+   ("\\<\\(create_generated_clock\\|create_clock\\|set_input_jitter\\|set_input_delay\\|set_output_delay\\)\\>" . font-lock-keyword-face)
+   ("\\<\\(set_property\\|set_clock_groups\\|set_multicycle_path\\|set_false_path\\|set_max_delay\\)\\>" . font-lock-keyword-face)
+   ("\\<\\(create_pblock\\|add_cells_to_pblock\\|resize_pblock\\)\\>" . font-lock-keyword-face)
+   ("\\<\\(CLOCK_DEDICATED_ROUTE\\|IOSTANDARD\\|DRIVE\\|DIFF_TERM\\|VCCAUX_IO\\|SLEW\\|FAST\\|DCI_CASCADE\\)\\>" . font-lock-constant-face)
+   ("\\<\\(PACKAGE_PIN\\|IOB\\|LOC\\)\\>" . font-lock-constant-face)
+   ("-\\<\\(name\\|period\\|clock\\|through\\|filter\\|hierarchical\\|hier\\|fall_from\\|rise_from\\|add_delay\\)\\>" . font-lock-constant-face)
+   ("-\\<\\(max\\|min\\|rise_to\\|fall_to\\|of_objects\\|from\\|to\\|setup\\|hold\\|end\\|start\\|of\\|group\\)\\>" . font-lock-constant-face)
+   ("-\\<\\(physically_exclusive\\|asynchronous\\|min\\|rise_to\\|fall_to\\|of_objects\\|from\\|to\\|setup\\|hold\\|of\\|group\\|asynchronous\\)\\>" . font-lock-constant-face)
+   ("-\\<\\(include_generated_clocks\\|primitive_group\\|pppasynchronous\\)\\>" . font-lock-constant-face)
+
+   ("\\<\\(create_bd_design\\|create_bd_cell\\|create_bd_intf_pin\\|current_bd_instance\\)\\>" . font-lock-keyword-face)
+   ("\\<\\(create_bd_pin\\|connect_bd_intf_net\\|connect_bd_net\\|create_bd_addr_seg\\)\\>" . font-lock-keyword-face)
+   ("-\\<\\(intf_net\\|dict\\|range\\|offset\\|dir\\|type\\|vlnv\\|net\\)\\>" . font-lock-constant-face)
+  )
+)
+(define-derived-mode vivado-mode tcl-mode
+  (setq font-lock-defaults '(vivado_keywords))
+  (setq mode-name "vivado mode")
+)
+(provide 'vivado-mode)
+;; End of snippet copyrighted by Jim Wu.
+(add-to-list 'auto-mode-alist '("\\.xdc\\'" . vivado-mode))
