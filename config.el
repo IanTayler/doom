@@ -10,12 +10,11 @@
 (add-to-list 'auto-mode-alist '("\\Dockerfile\\'" . dockerfile-mode))
 
 ;; Swap ; and : for improving chances of not getting tendinitis.
-(map! :nem ":" #'evil-repeat-find-char)
-(map! :nem ";" #'evil-ex)
+(map! :nvem ":" #'evil-repeat-find-char)
+(map! :nvem ";" #'evil-ex)
 
 (after! evil
-  (with-eval-after-load 'evil
-    (defalias #'forward-evil-word #'forward-evil-symbol)))
+  (defalias #'forward-evil-word #'forward-evil-symbol))
 
 ;; Org stuff.
 (after! org
