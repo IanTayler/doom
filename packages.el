@@ -7,3 +7,4 @@
 ;; (package! builtin-package :disable t)
 
 (package! evil-numbers)
+(package! verilog-mode)

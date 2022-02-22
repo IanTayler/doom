@@ -97,3 +97,16 @@
 (provide 'vivado-mode)
 ;; End of snippet copyrighted by Jim Wu.
 (add-to-list 'auto-mode-alist '("\\.xdc\\'" . vivado-mode))
+
+;; Verilog mode config
+(defun verilog-config-hook ()
+    (setq indent-tabs-mode nil)
+    ;; Set all indents to 4.
+    (setq tab-width 4)
+    (setq verilog-indent-level 4)
+    (setq verilog-indent-level-module 4)
+    (setq verilog-indent-level-declaration 4)
+    (setq verilog-cexp-indent 4)
+    (setq verilog-case-indent 4)
+    (setq verilog-indent-level-behavioral 4))
+ (add-hook 'verilog-mode-hook 'verilog-config-hook)
