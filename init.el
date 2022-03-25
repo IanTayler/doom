@@ -87,7 +87,8 @@
        ;;vterm             ; another terminals in Emacs
 
        :term
-       term              ; terminals in Emacs
+       ;; term              ; terminals in Emacs
+       vterm
 
        :lang
        ;;agda              ; types of types of types of types...
