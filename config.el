@@ -13,6 +13,10 @@
 (map! :nvem ":" #'evil-repeat-find-char)
 (map! :nvem ";" #'evil-ex)
 
+;; Ignore venvs in repos
+(after! lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venvs\\'"))
+
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol))
 
