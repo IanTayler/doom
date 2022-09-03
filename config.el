@@ -12,10 +12,19 @@
 ;; Swap ; and : for improving chances of not getting tendinitis.
 (map! :nvem ":" #'evil-repeat-find-char)
 (map! :nvem ";" #'evil-ex)
+(map! :nvem "C-e" #'evil-end-of-line)
 
 ;; Ignore venvs in repos
 (after! lsp-mode
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venvs\\'"))
+  (setq lsp-file-watch-threshold 5000)
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.venvs\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\docs\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\build\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\tfx/examples\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\tfx/components/testdata\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\tfx/components/testdata\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\testdata\\'")
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.git\\'"))
 
 (after! evil
   (defalias #'forward-evil-word #'forward-evil-symbol))
@@ -27,7 +36,7 @@
         org-capture-templates ;; Set custom capture templates. Almost the same as the default ones.
         '(("t" "Personal todo" entry
         (file+headline +org-capture-todo-file "Inbox")
-        "* [ ] %?\nCREATED: %U\n %i\n%a" :prepend t) ;; Added a created timestamp here.
+        "* [ ] %?\nCREATED: %U\n %i\n" :prepend t) ;; Added a created timestamp here.
         ("n" "Personal notes" entry
         (file+headline +org-capture-notes-file "Inbox")
         "* %u %?\n%i\n%a" :prepend t)

@@ -8,3 +8,4 @@
 
 (package! evil-numbers)
 (package! verilog-mode)
+(package! git-link)
